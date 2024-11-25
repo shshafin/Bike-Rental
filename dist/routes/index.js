@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const auth_routes_1 = require("../module/auth/auth.routes");
 const user_routes_1 = require("../module/user/user.routes");
+const bike_routes_1 = require("../module/bike/bike.routes");
 const router = (0, express_1.Router)();
 const moduleRoute = [
     {
@@ -12,6 +13,10 @@ const moduleRoute = [
     {
         path: "/users",
         route: user_routes_1.userRoute,
+    },
+    {
+        path: "/bikes",
+        route: bike_routes_1.bikeRoute,
     },
 ];
 // route loop

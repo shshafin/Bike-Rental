@@ -23,11 +23,10 @@ export const auth = (...roles: (keyof typeof USER_ROLE)[]) => {
 
       // Extract role and email
       const { role, email } = verifiedToken;
-      console.log({ role, email, verifiedToken });
 
       // User check
       const user = await User.findOne({ email });
-      console.log({ user });
+
       if (!user) {
         throw new AppError(403, "User not found");
       }
@@ -46,6 +45,7 @@ export const auth = (...roles: (keyof typeof USER_ROLE)[]) => {
       if (error instanceof jwt.JsonWebTokenError) {
         throw new AppError(403, "Invalid or expired token");
       }
+      next(error);
     }
   });
 };
