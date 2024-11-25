@@ -10,7 +10,7 @@ const handleCastError_1 = require("../errors/handleCastError");
 const handleDuplicateError_1 = require("../errors/handleDuplicateError");
 const AppError_1 = require("../errors/AppError");
 const zod_1 = require("zod");
-const handleZodError_1 = require("../errors/handleZodError");
+const handleZodError_1 = __importDefault(require("../errors/handleZodError"));
 const globalErrorHandler = (err, req, res, next) => {
     let statusCode = 500;
     let message = "something went wrong";
@@ -42,7 +42,7 @@ const globalErrorHandler = (err, req, res, next) => {
     }
     //   zod error handler
     else if (err instanceof zod_1.ZodError) {
-        const simplified = (0, handleZodError_1.handleZodError)(err);
+        const simplified = (0, handleZodError_1.default)(err);
         statusCode = (simplified === null || simplified === void 0 ? void 0 : simplified.statusCode) || 400;
         message = simplified === null || simplified === void 0 ? void 0 : simplified.message;
         errorSource = simplified === null || simplified === void 0 ? void 0 : simplified.errorSource;

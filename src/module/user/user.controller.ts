@@ -1,5 +1,4 @@
 import { AppError } from "../../errors/AppError";
-import { CustomRequest } from "../../interface/types.interface";
 import { catchAsync } from "../../utils/catchAsync";
 import { userService } from "./user.service";
 

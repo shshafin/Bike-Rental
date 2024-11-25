@@ -1,17 +1,20 @@
 import { ZodError } from "zod";
 
-export const handleZodError = (err: ZodError) => {
+const handleZodError = (err: ZodError) => {
   const handleError = err.issues.map((err) => {
     return {
-      path: err?.path[err?.path.length - 1],
-      message: err?.message,
+      path: err.path[err.path.length - 1],
+      message: err.message,
     };
   });
 
-  const statusCode = 400;
+  const statusCode = 404;
+
   return {
     statusCode,
-    message: err?.message,
+    message: err.name,
     errorSource: handleError,
   };
 };
+
+export default handleZodError;

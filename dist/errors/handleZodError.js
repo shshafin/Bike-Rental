@@ -1,18 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.handleZodError = void 0;
 const handleZodError = (err) => {
     const handleError = err.issues.map((err) => {
         return {
-            path: err === null || err === void 0 ? void 0 : err.path[(err === null || err === void 0 ? void 0 : err.path.length) - 1],
-            message: err === null || err === void 0 ? void 0 : err.message,
+            path: err.path[err.path.length - 1],
+            message: err.message,
         };
     });
-    const statusCode = 400;
+    const statusCode = 404;
     return {
         statusCode,
-        message: err === null || err === void 0 ? void 0 : err.message,
+        message: err.name,
         errorSource: handleError,
     };
 };
-exports.handleZodError = handleZodError;
+exports.default = handleZodError;

@@ -6,7 +6,7 @@ import { handleCastError } from "../errors/handleCastError";
 import { handleDuplicateError } from "../errors/handleDuplicateError";
 import { AppError } from "../errors/AppError";
 import { ZodError } from "zod";
-import { handleZodError } from "../errors/handleZodError";
+import handleZodError from "../errors/handleZodError";
 
 export const globalErrorHandler: ErrorRequestHandler = (
   err,
