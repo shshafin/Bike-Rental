@@ -23,6 +23,24 @@ const getUser = catchAsync(async (req, res) => {
   });
 });
 
+// update user profile
+const updateUser = catchAsync(async (req, res) => {
+  const userEmail = (req as any).user?.email;
+
+  if (!userEmail) {
+    throw new AppError(401, "User information is missing");
+  }
+
+  const updatedUser = await userService.updateUserInDB(userEmail, req.body);
+
+  res.status(200).json({
+    success: true,
+    message: "Profile updated successfully",
+    data: updatedUser,
+  });
+});
+
 export const userController = {
   getUser,
+  updateUser,
 };

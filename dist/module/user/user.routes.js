@@ -8,7 +8,11 @@ const express_1 = __importDefault(require("express"));
 const user_controller_1 = require("./user.controller");
 const auth_1 = require("../../middleware/auth");
 const user_const_1 = require("./user.const");
+const validateZodRequest_1 = require("../../middleware/validateZodRequest");
+const user_validation_1 = require("./user.validation");
 const router = express_1.default.Router();
-// register
+// get user
 router.get("/me", (0, auth_1.auth)(user_const_1.USER_ROLE.user, user_const_1.USER_ROLE.admin), user_controller_1.userController.getUser);
+// update user
+router.put("/me", (0, auth_1.auth)(user_const_1.USER_ROLE.user, user_const_1.USER_ROLE.admin), (0, validateZodRequest_1.validateZodRequest)(user_validation_1.userValidation.updateUserValidationSchema), user_controller_1.userController.updateUser);
 exports.userRoute = router;

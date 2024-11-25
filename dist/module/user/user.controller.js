@@ -30,6 +30,21 @@ const getUser = (0, catchAsync_1.catchAsync)((req, res) => __awaiter(void 0, voi
         data: user,
     });
 }));
+// update user profile
+const updateUser = (0, catchAsync_1.catchAsync)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _b;
+    const userEmail = (_b = req.user) === null || _b === void 0 ? void 0 : _b.email;
+    if (!userEmail) {
+        throw new AppError_1.AppError(401, "User information is missing");
+    }
+    const updatedUser = yield user_service_1.userService.updateUserInDB(userEmail, req.body);
+    res.status(200).json({
+        success: true,
+        message: "Profile updated successfully",
+        data: updatedUser,
+    });
+}));
 exports.userController = {
     getUser,
+    updateUser,
 };

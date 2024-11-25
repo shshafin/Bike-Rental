@@ -16,6 +16,14 @@ const getUserIntoDB = (email) => __awaiter(void 0, void 0, void 0, function* () 
     const result = yield user_model_1.User.findOne({ email });
     return result;
 });
+// update user
+const updateUserInDB = (email, updatedUser) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield user_model_1.User.findOneAndUpdate({ email }, updatedUser, {
+        new: true,
+    });
+    return result;
+});
 exports.userService = {
     getUserIntoDB,
+    updateUserInDB,
 };
