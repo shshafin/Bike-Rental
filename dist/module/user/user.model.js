@@ -31,7 +31,7 @@ const userSchema = new mongoose_1.Schema({
         type: String,
         required: [true, "Password is required"],
         minlength: [7, "Password must be at least 7 characters long"],
-        select: false, // Exclude password from the response
+        select: 0, // Exclude password from the response
     },
     address: {
         type: String,

@@ -30,8 +30,10 @@ const auth = (...roles) => {
             const verifiedToken = jsonwebtoken_1.default.verify(token, config_1.default.jwt_access_secret);
             // Extract role and email
             const { role, email } = verifiedToken;
+            console.log({ role, email, verifiedToken });
             // User check
             const user = yield user_model_1.User.findOne({ email });
+            console.log({ user });
             if (!user) {
                 throw new AppError_1.AppError(403, "User not found");
             }

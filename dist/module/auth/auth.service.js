@@ -30,11 +30,11 @@ const register = (payload) => __awaiter(void 0, void 0, void 0, function* () {
 // login
 const login = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     // user existence check
-    const user = yield user_model_1.User.findOne({ email: payload === null || payload === void 0 ? void 0 : payload.email });
+    const user = yield user_model_1.User.findOne({ email: payload === null || payload === void 0 ? void 0 : payload.email }).select("+password");
     if (!user)
         throw new Error("User doesn't exists! please register first");
     //   password check
-    const isMatched = (0, auth_utils_1.isPasswordMatched)(payload === null || payload === void 0 ? void 0 : payload.password, user === null || user === void 0 ? void 0 : user.password);
+    const isMatched = yield (0, auth_utils_1.isPasswordMatched)(payload === null || payload === void 0 ? void 0 : payload.password, user === null || user === void 0 ? void 0 : user.password);
     if (!isMatched)
         throw new Error("password not matched");
     //   jwt payload

@@ -19,11 +19,13 @@ const register = async (payload: TUser): Promise<any> => {
 // login
 const login = async (payload: TLoginUser) => {
   // user existence check
-  const user = await User.findOne({ email: payload?.email });
+  const user = await User.findOne({ email: payload?.email }).select(
+    "+password"
+  );
   if (!user) throw new Error("User doesn't exists! please register first");
 
   //   password check
-  const isMatched = isPasswordMatched(payload?.password, user?.password);
+  const isMatched = await isPasswordMatched(payload?.password, user?.password);
   if (!isMatched) throw new Error("password not matched");
 
   //   jwt payload
