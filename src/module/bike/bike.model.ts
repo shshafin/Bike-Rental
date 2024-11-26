@@ -30,6 +30,10 @@ const bikeSchema = new Schema<TBike>({
     type: String,
     required: true,
   },
+  isAvailable: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 export const Bike = model<TBike>("Bike", bikeSchema);

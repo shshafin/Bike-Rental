@@ -8,6 +8,7 @@ const createBikeValidationSchema = z.object({
   year: z.number(),
   model: z.string(),
   brand: z.string(),
+  isAvailable: z.boolean().optional().default(true),
 });
 
 export const bikeValidation = {

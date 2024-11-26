@@ -16,6 +16,12 @@ const createBikeIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function
     const result = yield bike_model_1.Bike.create(payload);
     return result;
 });
+// get bikes
+const getBikeFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield bike_model_1.Bike.find();
+    return result;
+});
 exports.bikeService = {
     createBikeIntoDB,
+    getBikeFromDB,
 };

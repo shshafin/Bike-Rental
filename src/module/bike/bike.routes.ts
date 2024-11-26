@@ -14,5 +14,7 @@ router.post(
   validateZodRequest(bikeValidation.createBikeValidationSchema),
   bikeController.createBike
 );
+// get  bikes
+router.get("/", bikeController.getBikes);
 
 export const bikeRoute = router;

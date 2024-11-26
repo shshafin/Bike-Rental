@@ -21,6 +21,16 @@ const createBike = (0, catchAsync_1.catchAsync)((req, res) => __awaiter(void 0, 
         data: result,
     });
 }));
+// get bikes
+const getBikes = (0, catchAsync_1.catchAsync)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const bikes = yield bike_service_1.bikeService.getBikeFromDB();
+    res.status(200).json({
+        success: true,
+        message: "Bikes retrieved successfully",
+        data: bikes,
+    });
+}));
 exports.bikeController = {
     createBike,
+    getBikes,
 };

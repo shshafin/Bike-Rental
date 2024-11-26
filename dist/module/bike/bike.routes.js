@@ -13,4 +13,6 @@ const bike_controller_1 = require("./bike.controller");
 const router = express_1.default.Router();
 // create bike
 router.post("/", (0, auth_1.auth)(user_const_1.USER_ROLE.admin), (0, validateZodRequest_1.validateZodRequest)(bike_validation_1.bikeValidation.createBikeValidationSchema), bike_controller_1.bikeController.createBike);
+// get  bikes
+router.get("/", bike_controller_1.bikeController.getBikes);
 exports.bikeRoute = router;
