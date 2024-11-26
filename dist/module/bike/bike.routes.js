@@ -15,4 +15,8 @@ const router = express_1.default.Router();
 router.post("/", (0, auth_1.auth)(user_const_1.USER_ROLE.admin), (0, validateZodRequest_1.validateZodRequest)(bike_validation_1.bikeValidation.createBikeValidationSchema), bike_controller_1.bikeController.createBike);
 // get  bikes
 router.get("/", bike_controller_1.bikeController.getBikes);
+// update bike
+router.put("/:id", (0, auth_1.auth)(user_const_1.USER_ROLE.admin), (0, validateZodRequest_1.validateZodRequest)(bike_validation_1.bikeValidation.updateBikeValidationSchema), bike_controller_1.bikeController.updateBike);
+// delete bike
+router.delete("/:id", (0, auth_1.auth)(user_const_1.USER_ROLE.admin), bike_controller_1.bikeController.deleteBike);
 exports.bikeRoute = router;

@@ -10,7 +10,11 @@ const createBikeValidationSchema = z.object({
   brand: z.string(),
   isAvailable: z.boolean().optional().default(true),
 });
+const updateBikeValidationSchema = z.object({
+  pricePerHour: z.number(),
+});
 
 export const bikeValidation = {
   createBikeValidationSchema,
+  updateBikeValidationSchema,
 };

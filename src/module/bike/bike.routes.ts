@@ -16,5 +16,14 @@ router.post(
 );
 // get  bikes
 router.get("/", bikeController.getBikes);
+// update bike
+router.put(
+  "/:id",
+  auth(USER_ROLE.admin),
+  validateZodRequest(bikeValidation.updateBikeValidationSchema),
+  bikeController.updateBike
+);
+// delete bike
+router.delete("/:id", auth(USER_ROLE.admin), bikeController.deleteBike);
 
 export const bikeRoute = router;

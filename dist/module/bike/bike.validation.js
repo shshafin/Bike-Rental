@@ -12,6 +12,10 @@ const createBikeValidationSchema = zod_1.z.object({
     brand: zod_1.z.string(),
     isAvailable: zod_1.z.boolean().optional().default(true),
 });
+const updateBikeValidationSchema = zod_1.z.object({
+    pricePerHour: zod_1.z.number(),
+});
 exports.bikeValidation = {
     createBikeValidationSchema,
+    updateBikeValidationSchema,
 };

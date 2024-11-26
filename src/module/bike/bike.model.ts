@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose";
+import mongoose, { model, Schema } from "mongoose";
 import { TBike } from "./bike.interface";
 
 const bikeSchema = new Schema<TBike>({
@@ -34,6 +34,11 @@ const bikeSchema = new Schema<TBike>({
     type: Boolean,
     default: true,
   },
+});
+
+bikeSchema.pre("find", async function (next) {
+  this.find({ isAvailable: { $ne: false } } as mongoose.FilterQuery<TBike>);
+  next();
 });
 
 export const Bike = model<TBike>("Bike", bikeSchema);
