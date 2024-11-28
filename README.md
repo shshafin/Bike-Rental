@@ -7,18 +7,17 @@
 </head>
 <body>
     <h1>Bike Rental Reservation System</h1>
-
     <p><strong>Project Name:</strong> Bike Rental Reservation System</p>
     <p><strong>Created by:</strong> Shafin</p>
     <p><strong>Contact:</strong> <a href="mailto:shafinsadnan08@gmail.com">shafinsadnan08@gmail.com</a></p>
-
+    <br>
     <h2>Introduction</h2>
     <p>
         The Bike Rental Reservation System allows users to view available bikes, register, and reserve bikes for rental. 
         Admins can manage the bikes, including adding, updating, and deleting bike listings. 
         The system also calculates rental costs based on the duration of the rental.
     </p>
-
+    <br>
     <h2>Features</h2>
     <ul>
         <li>Admin Management: Create, update, and delete bike listings.</li>
@@ -26,7 +25,7 @@
         <li>Rental Calculation: Calculates rental fee based on the time between bike rental and return.</li>
         <li>JWT Authentication: Secure authentication for both admin and user roles.</li>
     </ul>
-
+    <br>
     <h2>Tech Stack</h2>
     <table>
         <tr>
@@ -42,7 +41,7 @@
             <td>Zod, Mongoose for MongoDB</td>
         </tr>
     </table>
-
+    <br>
     <h2>Setup & Installation</h2>
     <ol>
         <li>Clone this repository to your local machine:</li>
@@ -66,7 +65,7 @@ JWT_REFRESH_EXPIRES_IN=7d
         <pre><code>npm start</code></pre>
         <li>The app will run at <code>http://localhost:2829</code>.</li>
     </ol>
-
+    <br>
     <h2>API Endpoints</h2>
     <h3>User Endpoints</h3>
     <ul>
@@ -78,14 +77,14 @@ JWT_REFRESH_EXPIRES_IN=7d
         <li><strong>GET /rental</strong> - Get all rentals of the user.</li>
         <li><strong>PUT /rental/return</strong> - Return a bike rental and calculate the cost.</li>
     </ul>
-
+    <br>
     <h3>Admin Endpoints</h3>
     <ul>
         <li><strong>POST /admin/bike</strong> - Admin creates a new bike listing.</li>
         <li><strong>PUT /admin/bike/:id</strong> - Admin updates an existing bike.</li>
         <li><strong>DELETE /admin/bike/:id</strong> - Admin deletes a bike listing.</li>
     </ul>
-
+    <br>
     <h2>Authentication</h2>
     <p>
         The application uses JWT (JSON Web Tokens) for user authentication. 
@@ -93,7 +92,7 @@ JWT_REFRESH_EXPIRES_IN=7d
     </p>
     <p><strong>Access Token Expiration:</strong> 1 day</p>
     <p><strong>Refresh Token Expiration:</strong> 7 days</p>
-
+    <br>
     <h2>Model Structure</h2>
     <h3>User Model</h3>
     <ul>
@@ -103,7 +102,6 @@ JWT_REFRESH_EXPIRES_IN=7d
         <li>Phone</li>
         <li>Role (admin/user)</li>
     </ul>
-
     <h3>Bike Model</h3>
     <ul>
         <li>Bike Name</li>
@@ -111,7 +109,6 @@ JWT_REFRESH_EXPIRES_IN=7d
         <li>Price per Hour</li>
         <li>Availability</li>
     </ul>
-
     <h3>Rental Model</h3>
     <ul>
         <li>User ID</li>
@@ -120,7 +117,7 @@ JWT_REFRESH_EXPIRES_IN=7d
         <li>End Date (when returned)</li>
         <li>Total Rental Cost</li>
     </ul>
-
+    <br>
     <h2>Environment Variables</h2>
     <table>
         <tr>
@@ -160,10 +157,10 @@ JWT_REFRESH_EXPIRES_IN=7d
             <td>Expiration time for the refresh token.</td>
         </tr>
     </table>
-
+    <br>
     <h2>Contributing</h2>
     <p>If you would like to contribute to this project, feel free to fork the repository and submit a pull request.</p>
-
+    <br>
     <h2>License</h2>
     <p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
 
