@@ -3,166 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bike Rental Reservation System</title>
+    <title>Bike Rental API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+        }
+        h2 {
+            color: #2980b9;
+        }
+        h3 {
+            color: #16a085;
+        }
+        code {
+            background-color: #ecf0f1;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        pre {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 1.1em;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .highlight {
+            color: #e74c3c;
+        }
+    </style>
 </head>
 <body>
-    <h1>Bike Rental Reservation System</h1>
-    <p><strong>Project Name:</strong> Bike Rental Reservation System</p>
-    <p><strong>Created by:</strong> Shafin</p>
-    <p><strong>Contact:</strong> <a href="mailto:shafinsadnan08@gmail.com">shafinsadnan08@gmail.com</a></p>
     <br>
-    <h2>Introduction</h2>
-    <p>
-        The Bike Rental Reservation System allows users to view available bikes, register, and reserve bikes for rental. 
-        Admins can manage the bikes, including adding, updating, and deleting bike listings. 
-        The system also calculates rental costs based on the duration of the rental.
-    </p>
+    <h1>🚴‍♂️ Bike Rental API</h1>
+    <p>Welcome to the <strong>Bike Rental API</strong>, a modern solution for managing bike rentals, users, and administrative tasks. This API allows users to rent bikes, manage their rentals, and provides administrative access to manage the bike fleet.</p>
     <br>
-    <h2>Features</h2>
-    <ul>
-        <li>Admin Management: Create, update, and delete bike listings.</li>
-        <li>User Interaction: View bikes, update user profile (name and phone), and create rentals.</li>
-        <li>Rental Calculation: Calculates rental fee based on the time between bike rental and return.</li>
-        <li>JWT Authentication: Secure authentication for both admin and user roles.</li>
-    </ul>
-    <br>
-    <h2>Tech Stack</h2>
-    <table>
-        <tr>
-            <th>Programming Language</th>
-            <td>TypeScript</td>
-        </tr>
-        <tr>
-            <th>Web Framework</th>
-            <td>Express.js</td>
-        </tr>
-        <tr>
-            <th>ODM & Validation Library</th>
-            <td>Zod, Mongoose for MongoDB</td>
-        </tr>
-    </table>
-    <br>
-    <h2>Setup & Installation</h2>
-    <ol>
-        <li>Clone this repository to your local machine:</li>
-        <pre><code>git clone https://github.com/yourusername/bike-rental-system.git</code></pre>
-        <li>Navigate to the project directory:</li>
-        <pre><code>cd bike-rental-system</code></pre>
-        <li>Install the required dependencies:</li>
-        <pre><code>npm install</code></pre>
-        <li>Create a `.env` file in the root directory with the following environment variables:</li>
+    <div class="section">
+        <h2>🚀 Features</h2>
+        <ul>
+            <li><strong>User Management:</strong> Register, update your profile, and manage your account.</li>
+            <li><strong>Bike Rentals:</strong> Rent bikes, view available bikes, and return them when done.</li>
+            <li><strong>Admin Dashboard:</strong> Manage bike availability, add or remove bikes, and more.</li>
+        </ul>
+    </div>
+<br>
+    <div class="section">
+        <h2>📡 API Endpoints</h2>
+<br>
+        <h3>Users</h3>
+        <ul>
+            <li><code>GET /users/me</code> - Get the current user's profile details.</li>
+            <li><code>PUT /users/me</code> - Update the current user's profile information (name, email, phone, etc.).</li>
+        </ul>
+<br>
+        <h3>Rentals</h3>
+        <ul>
+            <li><code>GET /rentals</code> - Get a list of all rentals.</li>
+            <li><code>POST /rentals</code> - Create a new rental (Rent a bike).</li>
+            <li><code>PUT /rentals/:id/return</code> - Mark the rental as returned. Specify the rental ID.</li>
+        </ul>
+<br>
+        <h3>Admin Routes</h3>
+        <ul>
+            <li><code>GET /admin/bikes</code> - Get a list of all bikes available for rent.</li>
+            <li><code>POST /admin/bikes</code> - Add a new bike to the rental fleet.</li>
+            <li><code>PUT /admin/bikes/:id</code> - Update bike details (e.g., availability, price, etc.).</li>
+            <li><code>DELETE /admin/bikes/:id</code> - Remove a bike from the fleet.</li>
+        </ul>
+<br>
+        <h3>Home Route</h3>
+        <ul>
+            <li><code>GET /</code> - Get a welcome message or home page details.</li>
+        </ul>
+    </div>
+<br>
+    <div class="section">
+        <h2>🧩 Models</h2>
+<br>
+        <h3>User Model</h3>
         <pre><code>
-NODE_ENV=development
-PORT=2829
-DB_URL=mongodb+srv://shafin07:shafinswarna07@cluster0.wmvi8.mongodb.net/bike-rental?retryWrites=true&w=majority&appName=Cluster0
-BCRYPT_SALT_ROUNDS=7
-JWT_ACCESS_SECRET=secret
-JWT_ACCESS_EXPIRES_IN=1d
-JWT_REFRESH_SECRET=refreshsecret
-JWT_REFRESH_EXPIRES_IN=7d
+{
+  name: String,          // The name of the user
+  email: String,         // The contact email address
+  password: String,      // The account password
+  phone: String,         // The contact phone number
+  address: String,       // The physical address
+  role: String,          // The role of the user ('admin' / 'user')
+}
         </code></pre>
-        <li>Run the project locally:</li>
-        <pre><code>npm start</code></pre>
-        <li>The app will run at <code>http://localhost:2829</code>.</li>
-    </ol>
-    <br>
-    <h2>API Endpoints</h2>
-    <h3>User Endpoints</h3>
-    <ul>
-        <li><strong>POST /auth/register</strong> - Register a new user.</li>
-        <li><strong>POST /auth/login</strong> - Login a user and receive a JWT token.</li>
-        <li><strong>GET /user/profile</strong> - View the user's profile.</li>
-        <li><strong>PUT /user/profile</strong> - Update the user's name and phone number.</li>
-        <li><strong>POST /rental/create</strong> - Create a new rental for the user.</li>
-        <li><strong>GET /rental</strong> - Get all rentals of the user.</li>
-        <li><strong>PUT /rental/return</strong> - Return a bike rental and calculate the cost.</li>
-    </ul>
-    <br>
-    <h3>Admin Endpoints</h3>
-    <ul>
-        <li><strong>POST /admin/bike</strong> - Admin creates a new bike listing.</li>
-        <li><strong>PUT /admin/bike/:id</strong> - Admin updates an existing bike.</li>
-        <li><strong>DELETE /admin/bike/:id</strong> - Admin deletes a bike listing.</li>
-    </ul>
-    <br>
-    <h2>Authentication</h2>
-    <p>
-        The application uses JWT (JSON Web Tokens) for user authentication. 
-        Upon login, a JWT access token is issued which must be included in the Authorization header of subsequent requests.
-    </p>
-    <p><strong>Access Token Expiration:</strong> 1 day</p>
-    <p><strong>Refresh Token Expiration:</strong> 7 days</p>
-    <br>
-    <h2>Model Structure</h2>
-    <h3>User Model</h3>
-    <ul>
-        <li>Username</li>
-        <li>Email</li>
-        <li>Password (hashed)</li>
-        <li>Phone</li>
-        <li>Role (admin/user)</li>
-    </ul>
-    <h3>Bike Model</h3>
-    <ul>
-        <li>Bike Name</li>
-        <li>Description</li>
-        <li>Price per Hour</li>
-        <li>Availability</li>
-    </ul>
-    <h3>Rental Model</h3>
-    <ul>
-        <li>User ID</li>
-        <li>Bike ID</li>
-        <li>Start Date</li>
-        <li>End Date (when returned)</li>
-        <li>Total Rental Cost</li>
-    </ul>
-    <br>
-    <h2>Environment Variables</h2>
-    <table>
-        <tr>
-            <th>Variable</th>
-            <th>Description</th>
-        </tr>
-        <tr>
-            <td><code>NODE_ENV</code></td>
-            <td>Set to 'development' or 'production' based on the environment.</td>
-        </tr>
-        <tr>
-            <td><code>PORT</code></td>
-            <td>The port on which the server will run (default is 2829).</td>
-        </tr>
-        <tr>
-            <td><code>DB_URL</code></td>
-            <td>MongoDB connection string for the bike rental database.</td>
-        </tr>
-        <tr>
-            <td><code>BCRYPT_SALT_ROUNDS</code></td>
-            <td>Number of salt rounds for bcrypt password hashing.</td>
-        </tr>
-        <tr>
-            <td><code>JWT_ACCESS_SECRET</code></td>
-            <td>Secret key for signing access tokens.</td>
-        </tr>
-        <tr>
-            <td><code>JWT_ACCESS_EXPIRES_IN</code></td>
-            <td>Expiration time for the access token.</td>
-        </tr>
-        <tr>
-            <td><code>JWT_REFRESH_SECRET</code></td>
-            <td>Secret key for signing refresh tokens.</td>
-        </tr>
-        <tr>
-            <td><code>JWT_REFRESH_EXPIRES_IN</code></td>
-            <td>Expiration time for the refresh token.</td>
-        </tr>
-    </table>
-    <br>
-    <h2>Contributing</h2>
-    <p>If you would like to contribute to this project, feel free to fork the repository and submit a pull request.</p>
-    <br>
-    <h2>License</h2>
-    <p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
+<br>
+        <h3>Bike Model</h3>
+        <pre><code>
+{
+  name: String,          // The name of the bike model
+  description: String,   // A brief description of the bike
+  pricePerHour: Number,  // The rental price per hour
+  isAvailable: Boolean,  // Whether the bike is available for rental (default: true)
+  cc: Number,            // The engine capacity of the bike in cubic centimeters
+  year: Number,          // The manufacturing year of the bike
+  model: String,         // The model of the bike
+  brand: String,         // The brand of the bike
+}
+        </code></pre>
+<br>
+        <h3>Rental Model</h3>
+        <pre><code>
+{
+  userId: ObjectId,      // Reference to the User model
+  bikeId: ObjectId,      // Reference to the Bike model
+  startTime: Date,       // The start time of the rental
+  returnTime: Date,      // The return time of the rental
+  totalCost: Number,     // The total cost of the rental
+  isReturned: Boolean,   // Indicates if the bike has been returned (default: false)
+}
+        </code></pre>
+    </div>
+<br>
+    <div class="section">
+        <h2>⚙️ Setup Instructions</h2>
+        <ol>
+            <li><span class="bold">Clone the repository:</span>
+                <pre><code>git clone https://github.com/yourusername/bike-rental-api.git</code></pre>
+            </li>
+            <li><span class="bold">Install dependencies:</span>
+                <pre><code>npm install</code></pre>
+            </li>
+            <li><span class="bold">Start the server:</span>
+                <pre><code>npm start</code></pre>
+            </li>
+            <li><span class="bold">Environment Variables:</span> Make sure to set up your environment variables as needed (e.g., database URL, secret keys) to ensure the API works correctly.</li>
+        </ol>
+    </div>
+<br>
+    <div class="section">
+        <h2>💻 Tech Stack</h2>
+        <ul>
+            <li><strong>Node.js</strong> and <strong>Express</strong> for the server</li>
+            <li><strong>MongoDB</strong> for database</li>
+            <li><strong>Mongoose</strong> for schema and model management</li>
+            <li><strong>JWT</strong> for authentication</li>
+            <li><strong>BCryptJS</strong> for password hashing</li>
+        </ul>
+    </div>
+<br>
+    <div class="section">
+        <h2>🎨 Design & Styling</h2>
+        <p>The API is built with modern practices in mind and designed to be easy to integrate into a larger application. It follows RESTful conventions to ensure scalability and readability.</p>
+    </div>
+<br>
+    <div class="section">
+        <h2>🛠️ Tools & Libraries</h2>
+        <ul>
+            <li><strong>Node.js</strong> - A JavaScript runtime for building scalable applications.</li>
+            <li><strong>Express.js</strong> - A web framework for Node.js, used to build the API.</li>
+            <li><strong>Mongoose</strong> - A MongoDB object modeling tool.</li>
+            <li><strong>JWT</strong> - JSON Web Tokens for secure authentication.</li>
+            <li><strong>BcryptJS</strong> - A library for hashing passwords.</li>
+        </ul>
+    </div>
+<br>
+    <div class="section">
+        <h2>📄 License</h2>
+        <p>This project is licensed under the MIT License - see the <a href="LICENSE" target="_blank" class="highlight">LICENSE</a> file for details.</p>
+    </div>
+<br>
+    <div class="section">
+        <h2>🔗 Contact</h2>
+        <p>If you have any questions, issues, or suggestions, feel free to reach out:</p>
+        <p><strong>Shafin</strong><br>Email: <a href="mailto:shafinsadnan08@gmail.com">shafinsadnan08@gmail.com</a></p>
+    </div>
 
 </body>
 </html>
