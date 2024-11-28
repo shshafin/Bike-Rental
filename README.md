@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Bike Rental API</h1>
-    <p>Welcome to the <strong>Bike Rental API</strong>, a modern and scalable solution for managing bike rentals, users, and administrative tasks. This API provides seamless bike rental services, from renting a bike to managing user profiles, and even administrative access for managing bike fleets.</p>
+    <p>Welcome to the <strong>Bike Rental Reservation System </strong>, a modern and scalable solution for managing bike rentals, users, and administrative tasks. This API provides seamless bike rental services, from renting a bike to managing user profiles, and even administrative access for managing bike fleets.</p>
     <h2>Key Features</h2>
     <ul>
         <li><strong>User Management:</strong> Register, update your profile, and manage your account details.</li>
@@ -130,13 +130,13 @@
     <h2>Setup Instructions</h2>
     <ul>
         <li><strong>Clone the repository:</strong>
-            <pre><code>git clone https://github.com/yourusername/bike-rental-api.git</code></pre>
+            <pre><code>git clone https://github.com/shshafin/Bike-Rental.git</code></pre>
         </li>
         <li><strong>Install dependencies:</strong>
             <pre><code>npm install</code></pre>
         </li>
         <li><strong>Start the server:</strong>
-            <pre><code>npm start</code></pre>
+            <pre><code>npm run dev</code></pre>
         </li>
         <li><strong>Environment Variables:</strong> Set the required environment variables (e.g., database URL, secret keys) for proper functionality. You can create a <code>.env</code> file with the following format:</li>
     </ul>
