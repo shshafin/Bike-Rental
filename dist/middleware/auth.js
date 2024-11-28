@@ -29,7 +29,7 @@ const auth = (...roles) => {
             // Verify token
             const verifiedToken = jsonwebtoken_1.default.verify(token, config_1.default.jwt_access_secret);
             // Extract role and email
-            const { role, email } = verifiedToken;
+            const { role, email, id } = verifiedToken;
             // User check
             const user = yield user_model_1.User.findOne({ email });
             if (!user) {
@@ -40,7 +40,7 @@ const auth = (...roles) => {
                 throw new AppError_1.AppError(401, "You have no access to this route");
             }
             // Attach user info to the request
-            req.user = { email: user.email, role: user.role };
+            req.user = { email: user.email, role: user.role, id: user.id };
             next();
         }
         catch (error) {

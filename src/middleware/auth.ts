@@ -22,7 +22,7 @@ export const auth = (...roles: (keyof typeof USER_ROLE)[]) => {
       ) as JwtPayload;
 
       // Extract role and email
-      const { role, email } = verifiedToken;
+      const { role, email, id } = verifiedToken;
 
       // User check
       const user = await User.findOne({ email });
@@ -37,7 +37,7 @@ export const auth = (...roles: (keyof typeof USER_ROLE)[]) => {
       }
 
       // Attach user info to the request
-      (req as any).user = { email: user.email, role: user.role };
+      (req as any).user = { email: user.email, role: user.role, id: user.id };
 
       next();
     } catch (error) {
