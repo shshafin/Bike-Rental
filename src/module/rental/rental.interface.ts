@@ -4,7 +4,7 @@ export type TRental = {
   userId: mongoose.ObjectId;
   bikeId: mongoose.ObjectId;
   startTime: string;
-  returnTime: string | null;
+  returnTime: Date | null;
   totalCost: number;
   isReturned: boolean;
 };

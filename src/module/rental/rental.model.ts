@@ -17,7 +17,7 @@ const rentalSchema = new Schema<TRental>({
     required: true,
   },
   returnTime: {
-    type: String || null,
+    type: Date || null,
     default: null,
   },
   totalCost: {

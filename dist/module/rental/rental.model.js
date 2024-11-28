@@ -18,7 +18,7 @@ const rentalSchema = new mongoose_1.Schema({
         required: true,
     },
     returnTime: {
-        type: String || null,
+        type: Date || null,
         default: null,
     },
     totalCost: {

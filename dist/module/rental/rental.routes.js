@@ -11,6 +11,10 @@ const validateZodRequest_1 = require("../../middleware/validateZodRequest");
 const rental_validation_1 = require("./rental.validation");
 const rental_controller_1 = require("./rental.controller");
 const router = express_1.default.Router();
-// create bike
+// create rental
 router.post("/", (0, auth_1.auth)(user_const_1.USER_ROLE.admin, user_const_1.USER_ROLE.user), (0, validateZodRequest_1.validateZodRequest)(rental_validation_1.RentalValidation.createRentalValidationSchema), rental_controller_1.rentalController.createRental);
+// get rentals
+router.get("/", (0, auth_1.auth)(user_const_1.USER_ROLE.user), rental_controller_1.rentalController.getRentals);
+// return bike
+router.put("/:id/return", (0, auth_1.auth)(user_const_1.USER_ROLE.user), rental_controller_1.rentalController.returnBike);
 exports.rentalRoute = router;
