@@ -6,7 +6,7 @@
     
 </head>
 <body>
-    <h1>Bike Rental API</h1>
+    <h1>Bike Rental Reservation System</h1>
     <p>Welcome to the <strong>Bike Rental Reservation System </strong>, a modern and scalable solution for managing bike rentals, users, and administrative tasks. This API provides seamless bike rental services, from renting a bike to managing user profiles, and even administrative access for managing bike fleets.</p>
     <h2>Key Features</h2>
     <ul>
