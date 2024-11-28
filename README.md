@@ -33,10 +33,6 @@
         <li><strong>PUT /admin/bikes/:id</strong> - Update bike details (e.g., availability, price, etc.).</li>
         <li><strong>DELETE /admin/bikes/:id</strong> - Remove a bike from the fleet.</li>
     </ul>
-    <h3>4. Home Route</h3>
-    <ul>
-        <li><strong>GET /</strong> - Retrieve the welcome message or home page details.</li>
-    </ul>
     <h2>Data Models</h2>
     <h3>User Model</h3>
     <table>
